@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { Typography, Box, Container, IconButton } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Hero from "../components/Hero";
+import { Typography, Box, Container } from "@mui/material";
 import MusicCard from "../components/MusicCard";
 import Shows from "../components/Shows";
 import Crew from "../components/Crew";
 import Merch from "../components/Merch";
 import { useEffect, useState } from "react";
 import Tabs from "../components/Tabs";
+import Herosection from "../components/HeroSection";
+import Footer from "../components/Footer";
 export default function Home() {
   const [data, setData] = useState([]);
   const [profile, setProfile] = useState<ProfileProps>([]);
@@ -44,40 +44,7 @@ export default function Home() {
       </Head>
 
       {/* Hero section */}
-      <Box
-        sx={{
-          width: {
-            xs: "100vw",
-            md: "70vw",
-          },
-          height: "auto",
-          position: "relative",
-          margin: "auto",
-          marginTop: {
-            md: "100px",
-          },
-        }}
-      >
-        <IconButton
-          disableRipple
-          aria-label="menu"
-          sx={{
-            position: "absolute",
-            top: {
-              xs: "1rem",
-              md: "0"
-            },
-            right: "20px",
-            bgcolor: "gray",
-            cursor: "pointer",
-            zIndex: 100,
-          }}
-        >
-          <MoreVertIcon sx={{ color: "white" }} />
-        </IconButton>
-
-        <Hero title={profile[0]?.display_name?.text} />
-      </Box>
+      <Herosection profile={profile} />
 
       <Box
         sx={{
@@ -146,6 +113,7 @@ export default function Home() {
         <Shows obj={showsData}  />
         <Crew obj={crewData} />
         <Merch obj={merchData} />
+        <Footer />
       </Box>
     </div>
   );
